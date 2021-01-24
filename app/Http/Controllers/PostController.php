@@ -18,7 +18,7 @@ class PostController extends Controller
         //$posts = Post::all();
 
         //para paginar
-        $posts = Post::latest()->paginate(1);
+        $posts = Post::latest()->paginate(5);
         
         //$posts = Post::orderBy('id', 'DESC')->paginate();
 
@@ -222,7 +222,7 @@ class PostController extends Controller
 
         $posts = Post::where('title', 'LIKE', "%{$request->search}%")
             ->orWhere('content', 'LIKE', "%{$request->search}%")
-            ->paginate(1);
+            ->paginate(5);
 
         // ->toSql()
         // dd($posts)    

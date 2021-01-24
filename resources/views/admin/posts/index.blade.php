@@ -4,9 +4,10 @@
 
 @section('content')
 
-<a href="{{ route('posts.create') }}">Criar novo posts</a>
+<div class="container">
+<a class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-green-500 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none" href="{{ route('posts.create') }}">Criar novo posts</a>
 
-<h1>Index de Posts</h1>
+<h1 class="text-center text-3x1 uppercase font-black my-4">Index de Posts</h1>
 
 @if (session('message'))
     <div>
@@ -14,24 +15,24 @@
     </div>
 @endif
 
+
 <form action="{{ route('posts.search') }}" method="post">
     @csrf
-    <input type="text" name="search" id="search" placeholder="Filtrar: ">
-    <button type="submit">Filtrar</button>
+    <input type="text" name="search" id="search" class="focus:ring-indigo-300 focus:border-indigo-300 flex-1 block rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Pesquisar">
+    <button class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none" type="submit">Pesquisar</button>
 </form>
+
 
 <hr>
 
-<h1>Posts</h1>
+<h1 class="text-center text-3x1 uppercase font-black my-4">Posts</h1>
 
 @foreach ($posts as $post)
-    <p>
+    <p class="text-left text-3x1 uppercase my-4">
         <img src="{{url("storage/{$post->image}")}}" alt="{{$post->title}}" style="width:200px;height:200px;">
         {{ $post->title }} - {{ $post->content }} 
-        [
-            <a href="{{ route('posts.show', $post->id)}}">Ver</a>
-            <a href="{{ route('posts.edit', $post->id)}}">Edit</a>
-        ]
+        <a class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-pink-500 rounded-full shadow ripple hover:shadow-lg hover:bg-pink-600 focus:outline-none" href="{{ route('posts.show', $post->id)}}">Ver</a>
+        <a class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-yellow-600 focus:outline-none" href="{{ route('posts.edit', $post->id)}}">Edit</a>
     </p>
 @endforeach
 <hr>
@@ -42,5 +43,5 @@
     {{ $posts->links() }}
 @endif
 
-
+</div>
 @endsection
