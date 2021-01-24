@@ -5,7 +5,7 @@
 @section('content')
 
 <p class="text-right">
-    <a class="text-3x1 font-black my-4" href="{{ url('/logout') }}"> Sair do sistema </a>    
+    <a class="text-3x1 my-4" href="{{ url('/logout') }}"> Sair do sistema </a>    
 </p>
 
 <div class="container">
