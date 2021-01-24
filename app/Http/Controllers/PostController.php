@@ -229,4 +229,11 @@ class PostController extends Controller
 
         return view('admin.posts.index', compact('posts','filters'));
     }
+
+    public function logout(){
+        //Saindo do sistema
+        auth()->logout();
+        //Redirecionando para o home
+        return redirect('/');
+    }
 }
